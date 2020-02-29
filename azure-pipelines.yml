@@ -9,7 +9,14 @@ variables:
 
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'Run build $(buildConfiguration)'
+  displayName: 'Run build ($(buildConfiguration))'
 
 - script: dotnet test
   displayName: Run tests
+
+- task: NuGetCommand@2
+  inputs:
+    command: 'pack'
+    packagesToPack: '**/*.csproj'
+    versioningScheme: 'off'
+    includeReferencedProjects: true
