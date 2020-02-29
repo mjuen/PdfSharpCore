@@ -14,9 +14,5 @@ steps:
 - script: dotnet test
   displayName: Run tests
 
-- task: NuGetCommand@2
-  inputs:
-    command: 'pack'
-    packagesToPack: '**/*.csproj'
-    versioningScheme: 'off'
-    includeReferencedProjects: true
+- script: dotnet pack
+  displayName: Create nuget packages
