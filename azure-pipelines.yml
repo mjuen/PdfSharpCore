@@ -14,5 +14,11 @@ steps:
 - script: dotnet test
   displayName: Run tests
 
-- script: dotnet pack
-  displayName: Create nuget packages
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'pack'
+    packagesToPack: '**/*.csproj;!**/*.Test.csproj'
+    versioningScheme: 'byPrereleaseNumber'
+    majorVersion: '1'
+    minorVersion: '0'
+    patchVersion: '0'
